@@ -3,12 +3,17 @@ module objects {
     // private instance variables
     private _dy: number;
     private _dx: number;
+    
 
     // public properties
 
     // Constructor
     constructor() {
       super(managers.Game.assetManager.getResult("ocean"));
+      
+      if(managers.Game.currentScene == config.Scene.LEVEL2) {
+        this.rotation = 90;
+      }
       this.Start();
     }
 
@@ -18,7 +23,7 @@ module objects {
     private _reset():void {
 
       if (managers.Game.currentScene == config.Scene.LEVEL2){
-        this.y = 0;
+        this.x = 1420;
 
       }else{
         this.y = -960;      
@@ -29,7 +34,7 @@ module objects {
     // move the object to some new location
     private _move():void {
       if (managers.Game.currentScene == config.Scene.LEVEL2){
-        this.x += this._dx;
+        this.x -= this._dx;
 
       }else{
         this.y += this._dy;    
@@ -43,7 +48,7 @@ module objects {
     private _checkBounds():void {
 
       if (managers.Game.currentScene == config.Scene.LEVEL2){
-        if(this.x >= -800) {
+        if(this.x <= 640) {
           this._reset();
         }
 

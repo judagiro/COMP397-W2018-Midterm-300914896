@@ -16,6 +16,9 @@ var objects;
         // Constructor
         function Ocean() {
             var _this = _super.call(this, managers.Game.assetManager.getResult("ocean")) || this;
+            if (managers.Game.currentScene == config.Scene.LEVEL2) {
+                _this.rotation = 90;
+            }
             _this.Start();
             return _this;
         }
@@ -23,7 +26,7 @@ var objects;
         // reset the objects location to some value
         Ocean.prototype._reset = function () {
             if (managers.Game.currentScene == config.Scene.LEVEL2) {
-                this.y = 0;
+                this.x = 1420;
             }
             else {
                 this.y = -960;
@@ -32,7 +35,7 @@ var objects;
         // move the object to some new location
         Ocean.prototype._move = function () {
             if (managers.Game.currentScene == config.Scene.LEVEL2) {
-                this.x += this._dx;
+                this.x -= this._dx;
             }
             else {
                 this.y += this._dy;
@@ -41,7 +44,7 @@ var objects;
         // check to see if some boundary has been passed
         Ocean.prototype._checkBounds = function () {
             if (managers.Game.currentScene == config.Scene.LEVEL2) {
-                if (this.x >= -800) {
+                if (this.x <= 640) {
                     this._reset();
                 }
             }

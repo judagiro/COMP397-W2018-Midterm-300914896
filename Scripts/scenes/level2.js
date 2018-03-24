@@ -24,7 +24,7 @@ var scenes;
         // Initialize Game Variables and objects
         Level2Scene.prototype.Start = function () {
             this._ocean = new objects.Ocean();
-            this._ocean.rotation = -90;
+            //this._ocean.rotation = -90;
             this._plane = new objects.Plane();
             managers.Game.plane = this._plane;
             this._coin = new objects.Coin();
