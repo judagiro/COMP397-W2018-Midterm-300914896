@@ -1,5 +1,5 @@
 module scenes {
-  export class PlayScene extends objects.Scene {
+  export class Level2Scene extends objects.Scene {
     // Private Instance Variables
     private _ocean: objects.Ocean;
     private _plane: objects.Plane;
@@ -37,7 +37,7 @@ module scenes {
 
       // instantiate the cloud array
       this._clouds = new Array<objects.Cloud>();
-      this._cloudNum = 1;
+      this._cloudNum = 2;
       // loop and add each cloud to the array
       for (let count = 0; count < this._cloudNum; count++) {
         this._clouds[count] = new objects.Cloud();
