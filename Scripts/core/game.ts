@@ -140,7 +140,7 @@
         currentScene = new scenes.PlayScene();
         break;
       case config.Scene.LEVEL2:
-        currentScene = new scenes.PlayScene();
+        currentScene = new scenes.Level2Scene();
         break;
       case config.Scene.OVER:
         currentScene = new scenes.OverScene();

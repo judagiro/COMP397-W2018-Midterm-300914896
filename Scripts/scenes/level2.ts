@@ -28,7 +28,9 @@ module scenes {
 
     // Initialize Game Variables and objects
     public Start(): void {
+      
       this._ocean = new objects.Ocean();
+      this._ocean.rotation = -90;
       this._plane = new objects.Plane();
       managers.Game.plane = this._plane;
 
