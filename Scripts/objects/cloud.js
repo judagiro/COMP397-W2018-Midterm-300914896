@@ -33,21 +33,42 @@ var objects;
         };
         // reset the objects location to some value
         Cloud.prototype.Reset = function () {
-            this.x = Math.floor((Math.random() * (640 - this.width)) + this.halfWidth);
-            this.y = -this.height;
-            this._dx = Math.floor((Math.random() * 4) - 2);
-            this._dy = Math.floor((Math.random() * 5) + 5);
+            if (managers.Game.currentScene == config.Scene.PLAY) {
+                this.x = Math.floor((Math.random() * (640 - this.width)) + this.halfWidth);
+                this.y = -this.height;
+                this._dx = Math.floor((Math.random() * 4) - 2);
+                this._dy = Math.floor((Math.random() * 5) + 5);
+            }
+            else if (managers.Game.currentScene == config.Scene.LEVEL2) {
+                this.y = Math.floor((Math.random() * (480 - this.height)) + this.halfHeight);
+                this.x = this.height + 640;
+                this._dy = Math.floor((Math.random() * 4) - 2);
+                this._dx = Math.floor((Math.random() * 5) + 5);
+            }
         };
         // move the object to some new location
         Cloud.prototype.Move = function () {
-            this.y += this._dy;
-            this.x += this._dx;
+            if (managers.Game.currentScene == config.Scene.PLAY) {
+                this.y += this._dy;
+                this.x += this._dx;
+            }
+            else if (managers.Game.currentScene == config.Scene.LEVEL2) {
+                this.y += this._dy;
+                this.x -= this._dx;
+            }
         };
         // check to see if some boundary has been passed
         Cloud.prototype.CheckBounds = function () {
             // check lower bounds
-            if (this.y >= 480 + this.height) {
-                this.Reset();
+            if (managers.Game.currentScene == config.Scene.PLAY) {
+                if (this.y >= 480 + this.height) {
+                    this.Reset();
+                }
+            }
+            else if (managers.Game.currentScene == config.Scene.LEVEL2) {
+                if (this.x <= (-this.width)) {
+                    this.Reset();
+                }
             }
         };
         return Cloud;
